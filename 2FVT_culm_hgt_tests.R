@@ -3,7 +3,7 @@
 #assorted '..._2FVT_fitted_parameters.csv', '..._whole_plant_FVTs.csv', and 'All_2FVT_fitted_parameters.csv'
 #serve as required input files prior to running. 
 
-path='/Users/johnhodge/Desktop/AIC_outputs/2FVT_fits_w_Wald_CIs/'
+path='~/PATH/TO/FILE/2FVT/AIC_outputs/2FVT_fits_w_Wald_CIs/'
 lines=c('A10', 'RIL39', 'RIL110', 'RIL159', 'B100');
 
 line_cols=c(rgb(0,0.39,0,0.9), rgb(0.63, 0.13, 0.94,0.9), rgb(1, 0.65, 0, 0.9), rgb(0,0,1,0.9), rgb(0.8,0.6,0.11,0.9))
@@ -35,7 +35,7 @@ if(!is.null(method_p1) & !is.null(method_p2)){
 whole_plant_attr=c()
 
 for (line in c('A10', 'RIL39', 'RIL110', 'RIL159', 'B100')){
-	whole_plant_fits<-read.csv(file=paste('~/Desktop/AIC_outputs/2FVT_parameters/', line, '_whole_plant_FVTs.csv', sep=''), row.names=1)
+	whole_plant_fits<-read.csv(file=paste('~/PATH/TO/FILE/2FVT/2FVT_parameters/', line, '_whole_plant_FVTs.csv', sep=''), row.names=1)
 	cur_plant_attr<-c(whole_plant_fits[1,],whole_plant_fits[2,])
 	names(cur_plant_attr)<-c('flw_xo', 'flw_k', 'flw_L', 'lfno_xo', 'lfno_k', 'lfno_L')
 	whole_plant_attr<-rbind(whole_plant_attr, cur_plant_attr)
@@ -43,9 +43,9 @@ for (line in c('A10', 'RIL39', 'RIL110', 'RIL159', 'B100')){
 
 rownames(whole_plant_attr)=c('A10', 'RIL39', 'RIL110', 'RIL159', 'B100')
 
-meta_attr<-read.csv(file='~/Desktop/AIC_outputs/2FVT_parameters/All_2FVT_fitted_parameters.csv')
+meta_attr<-read.csv(file='~/PATH/TO/FILE/2FVT/2FVT_parameters/All_2FVT_fitted_parameters.csv')
 
-obs_culm_hgt<-read.csv(file='~/Desktop/AIC_outputs/QC_hgt_flw.csv')
+obs_culm_hgt<-read.csv(file='~/PATH/TO/FILE/2FVT/AIC_outputs/QC_hgt_flw.csv')
 
 #################################################################
 #1A. Leaf number with confidence intervals by genotype
@@ -108,7 +108,7 @@ iter = 1
 
 for (line in 1:length(lines)){
 
-	cur_pars=read.csv(paste('~/Desktop/AIC_outputs/2FVT_parameters/', lines[line], '_seg_culm_hgt_2FVT_fitted_parameters.csv', sep=''))
+	cur_pars=read.csv(paste('~/PATH/TO/FILE/2FVT/AIC_outputs/2FVT_parameters/', lines[line], '_seg_culm_hgt_2FVT_fitted_parameters.csv', sep=''))
 	cur_n=as.numeric(N[line,2])
 	
 	geno_list=c()
@@ -263,7 +263,7 @@ iter = 1
 
 for (line in 1:length(lines)){
 
-	cur_pars=read.csv(paste('~/Desktop/AIC_outputs/2FVT_parameters/', lines[line], '_seg_culm_hgt_2FVT_fitted_parameters.csv', sep=''))
+	cur_pars=read.csv(paste('~/PATH/TO/FILE/2FVT/AIC_outputs/2FVT_parameters/', lines[line], '_seg_culm_hgt_2FVT_fitted_parameters.csv', sep=''))
 	cur_n=as.numeric(N[line,2])
 	
 	geno_list=c()
@@ -406,7 +406,7 @@ iter = 1
 
 for (line in 1:length(lines)){
 
-	cur_pars=read.csv(paste('~/Desktop/AIC_outputs/2FVT_parameters/', lines[line], '_seg_culm_hgt_2FVT_fitted_parameters.csv', sep=''))
+	cur_pars=read.csv(paste('~/PATH/TO/FILE/2FVT/AIC_outputs/2FVT_parameters/', lines[line], '_seg_culm_hgt_2FVT_fitted_parameters.csv', sep=''))
 	cur_n=as.numeric(N[line,2])
 	
 	geno_list=c()
@@ -543,7 +543,7 @@ colnames(hgt_test)<-c('Genotype', 'Method', '2FVT_fitted_hgt', 'Avg_obs_hgt', 'D
 hgt_test<-as.data.frame(hgt_test)
 hgt_test
 
-pdf(file='~/Desktop/AIC_outputs/2FVT_model_graphs/2FVT_culm_height_tests.pdf', height=5, width=6)
+pdf(file='~/PATH/TO/FILE/2FVT/AIC_outputs/2FVT_model_graphs/2FVT_culm_height_tests.pdf', height=5, width=6)
 
 plot(c(-0.8, length(lines)), c(-25, max(as.numeric(as.character(hgt_test[,3])))), main='Genotype Height Treatments', xlab='', ylab='Culm Height (cm)', col='white', xaxt='n')
 abline(v=0:6, col='gray70', lwd=3); abline(h=0, col='gray70', lwd=3); axis(1, at=1:length(lines)-0.5, labels=lines); 
@@ -589,4 +589,4 @@ for (line in 1:length(lines)){
 
 dev.off()
 
-write.csv(file='~/Desktop/AIC_outputs/2FVT_model_graphs/2FVT_culm_height_tests.csv', hgt_test, row.names=FALSE)
+write.csv(file='~/PATH/TO/FILE/2FVT/AIC_outputs/2FVT_model_graphs/2FVT_culm_height_tests.csv', hgt_test, row.names=FALSE)

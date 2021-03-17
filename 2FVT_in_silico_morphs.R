@@ -3,7 +3,7 @@
 #assorted '..._2FVT_fitted_parameters.csv', '..._whole_plant_FVTs.csv', and 'All_2FVT_fitted_parameters.csv'
 #serve as required input files prior to running. 
 
-path='/Users/johnhodge/Desktop/2FVT_outputs/2FVT_fits_w_Wald_CIs/'
+path='~/PATH/TO/FILE/2FVT/2FVT_fits_w_Wald_CIs/'
 lines=c('A10', 'RIL39', 'RIL110', 'RIL159', 'B100');
 
 line_cols=c(rgb(0,0.39,0,0.9), rgb(0.63, 0.13, 0.94,0.9), rgb(1, 0.65, 0, 0.9), rgb(0,0,1,0.9), rgb(0.8,0.6,0.11,0.9))
@@ -35,7 +35,7 @@ if(!is.null(method_p1) & !is.null(method_p2)){
 whole_plant_attr=c()
 
 for (line in c('A10', 'RIL39', 'RIL110', 'RIL159', 'B100')){
-	whole_plant_fits<-read.csv(file=paste('~/Desktop/2FVT_outputs/2FVT_parameters/', line, '_whole_plant_FVTs.csv', sep=''), row.names=1)
+	whole_plant_fits<-read.csv(file=paste('~/PATH/TO/FILE/2FVT/2FVT_parameters/', line, '_whole_plant_FVTs.csv', sep=''), row.names=1)
 	cur_plant_attr<-c(whole_plant_fits[1,],whole_plant_fits[2,])
 	names(cur_plant_attr)<-c('flw_xo', 'flw_k', 'flw_L', 'lfno_xo', 'lfno_k', 'lfno_L')
 	whole_plant_attr<-rbind(whole_plant_attr, cur_plant_attr)
@@ -43,7 +43,7 @@ for (line in c('A10', 'RIL39', 'RIL110', 'RIL159', 'B100')){
 
 rownames(whole_plant_attr)=c('A10', 'RIL39', 'RIL110', 'RIL159', 'B100')
 
-meta_attr<-read.csv(file='~/Desktop/2FVT_outputs/2FVT_parameters/All_2FVT_fitted_parameters.csv')
+meta_attr<-read.csv(file='~/PATH/TO/FILE/2FVT/2FVT_parameters/All_2FVT_fitted_parameters.csv')
 
 #################################################################
 #1A. Leaf number with confidence intervals by genotype
@@ -91,7 +91,7 @@ if(!is.null(method_p1) & !is.null(method_p2)){							#>>> Transgression test per
 }
 
 
-pdf(file='~/Desktop/2FVT_outputs/2FVT_model_graphs/2FVT_lfno_w_WaldCI.pdf', height=7, width=9)
+pdf(file='~/PATH/TO/FILE/2FVT/2FVT_model_graphs/2FVT_lfno_w_WaldCI.pdf', height=7, width=9)
 
 plot(c(0,max(x_fit)), c(0, round(max(as.numeric(whole_plant_attr[,6])))), xlab='Days', ylab='Leaf no', main='Leaf Number', col='white')
 legend('topleft', legend=c(lines, method_title), col=c(line_cols,'black'), lwd=c(rep(2,length(line_cols)), 3), cex=0.8)
@@ -167,7 +167,7 @@ if(!is.null(method_p1) & !is.null(method_p2)){							#>>> Transgression test per
 	test_method<-L/(1+exp(-k*(x_fit-xo)))																	
 }
 
-pdf(file='~/Desktop/2FVT_outputs/2FVT_model_graphs/2FVT_flw_w_WaldCI.pdf', height=7, width=9)
+pdf(file='~/PATH/TO/FILE/2FVT/2FVT_model_graphs/2FVT_flw_w_WaldCI.pdf', height=7, width=9)
 
 plot(c(0,max(x_fit)), c(0, round(max(as.numeric(whole_plant_attr[,3])))), xlab='Days', ylab='Flowering', main=paste(method_title, ' Genotype Leaf Number',sep=''), col='white')
 legend('topleft', legend=c(lines, method_title), col=c(line_cols,'black'), lwd=c(rep(2,length(line_cols)), 3), cex=0.7)
@@ -199,7 +199,7 @@ iter = 1
 
 for (line in 1:length(lines)){
 
-	cur_pars=read.csv(paste('~/Desktop/2FVT_outputs/2FVT_parameters/', lines[line], '_seg_culm_hgt_2FVT_fitted_parameters.csv', sep=''))
+	cur_pars=read.csv(paste('~/PATH/TO/FILE/2FVT/2FVT_parameters/', lines[line], '_seg_culm_hgt_2FVT_fitted_parameters.csv', sep=''))
 	cur_n=as.numeric(N[line,2])
 	
 	geno_list=c()
@@ -252,7 +252,7 @@ method_fits=c()
 method_ceiling=floor(max(as.numeric(whole_plant_attr[,6])))
 method_ceiling=method_ceiling+1							#Add one unit to account for peduncle
 
-pdf(file='~/Desktop/2FVT_outputs/2FVT_model_graphs/2FVT_seg_hgt_w_WaldCI.pdf', height=7, width=9)
+pdf(file='~/PATH/TO/FILE/2FVT/2FVT_model_graphs/2FVT_seg_hgt_w_WaldCI.pdf', height=7, width=9)
 
 for (phyt in 2:method_ceiling){
 
@@ -324,7 +324,7 @@ sghgt_list<-fit_list
 # CULM HEIGHT OUTPUT
 #################################################################
 
-pdf(file='~/Desktop/2FVT_outputs/2FVT_model_graphs/2FVT_total_hgt_w_WaldCI_pub.pdf', height=6, width=5)
+pdf(file='~/PATH/TO/FILE/2FVT/2FVT_model_graphs/2FVT_total_hgt_w_WaldCI_pub.pdf', height=6, width=5)
 
 plot(c(0,30),c(0,30),col='white', xlab='Days', ylab='Length (cm)', main='Main Culm Height')
 legend('topleft', legend=c(lines), col=c(line_cols), lwd=c(rep(2,length(line_cols))), cex=0.7)
@@ -381,7 +381,7 @@ iter = 1
 
 for (line in 1:length(lines)){
 
-	cur_pars=read.csv(paste('~/Desktop/2FVT_outputs/2FVT_parameters/', lines[line], '_leaf_dist_2FVT_fitted_parameters.csv', sep=''))
+	cur_pars=read.csv(paste('~/PATH/TO/FILE/2FVT/2FVT_parameters/', lines[line], '_leaf_dist_2FVT_fitted_parameters.csv', sep=''))
 	cur_n=as.numeric(N[line,2])
 	
 	geno_list=c()
@@ -431,7 +431,7 @@ method_fits=c()
 
 method_ceiling=floor(max(as.numeric(whole_plant_attr[,6])))
 
-pdf(file='~/Desktop/2FVT_outputs/2FVT_model_graphs/2FVT_leaf_dist_w_WaldCI.pdf', height=7, width=9)
+pdf(file='~/PATH/TO/FILE/2FVT/2FVT_model_graphs/2FVT_leaf_dist_w_WaldCI.pdf', height=7, width=9)
 
 for (phyt in 2:method_ceiling){
 
@@ -509,7 +509,7 @@ iter = 1
 
 for (line in 1:length(lines)){
 
-	cur_pars=read.csv(paste('~/Desktop/2FVT_outputs/2FVT_parameters/', lines[line], '_leaf_angles_2FVT_fitted_parameters.csv', sep=''))
+	cur_pars=read.csv(paste('~/PATH/TO/FILE/2FVT/2FVT_parameters/', lines[line], '_leaf_angles_2FVT_fitted_parameters.csv', sep=''))
 	cur_n=as.numeric(N[line,2])
 	
 	geno_list=c()
@@ -559,7 +559,7 @@ method_fits=c()
 
 method_ceiling=floor(max(as.numeric(whole_plant_attr[,6])))
 
-pdf(file='~/Desktop/2FVT_outputs/2FVT_model_graphs/2FVT_leaf_angle_w_WaldCI.pdf', height=7, width=9)
+pdf(file='~/PATH/TO/FILE/2FVT/2FVT_model_graphs/2FVT_leaf_angle_w_WaldCI.pdf', height=7, width=9)
 
 for (phyt in 2:method_ceiling){
 
@@ -638,7 +638,7 @@ lfangle_list<-fit_list
 # IN SILICO MORPH OUTPUT
 #################################################################
 
-pdf.fn=paste('~/Desktop/2FVT_outputs/2FVT_model_graphs/Simulated_morphs.pdf')
+pdf.fn=paste('~/PATH/TO/FILE/2FVT/2FVT_model_graphs/Simulated_morphs.pdf')
 #pdf.fn=c()
 if(length(pdf.fn)>0){
 	pdf(file=pdf.fn, height=5, width=14)
@@ -650,11 +650,11 @@ for (day in 11:(length(x_fit)-1)){
 
 	if(length(pdf.fn)<=0){
 		if((day-10)<10){
-			fn=paste('~/Desktop/2FVT_outputs/2FVT_model_graphs/frames/frame_00', day-10,'.png',sep='')
+			fn=paste('~/PATH/TO/FILE/2FVT/2FVT_model_graphs/frames/frame_00', day-10,'.png',sep='')
 		}else if((day-10)<100){
-			fn=paste('~/Desktop/2FVT_outputs/2FVT_model_graphs/frames/frame_0', day-10,'.png',sep='')
+			fn=paste('~/PATH/TO/FILE/2FVT/2FVT_model_graphs/frames/frame_0', day-10,'.png',sep='')
 		}else{
-			fn=paste('~/Desktop/2FVT_outputs/2FVT_model_graphs/frames/frame_', day-10,'.png',sep='')	
+			fn=paste('~/PATH/TO/FILE/2FVT/2FVT_model_graphs/frames/frame_', day-10,'.png',sep='')	
 		}
 	
 		png(file=fn, height=500, width=1500)

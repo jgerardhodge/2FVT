@@ -26,7 +26,7 @@ for (line in c('A10', 'RIL39', 'RIL110', 'RIL159', 'B100')){
 	if (line=='RIL39'){reps=c(1:6,8:10)}
 
 
-	anno_data<-read.csv(paste('~/Dropbox/Acute_manuscript/Data/homology_groups/',line,'_homology_groups_cady_annotated.csv',sep=''))
+	anno_data<-read.csv(paste('~/PATH/TO/FILE/2FVT/',line,'_homology_groups_cady_annotated.csv',sep=''))
 
 	#####
 	# Phase 1: Extract Biologically meaningful measures to test from annotated plm homology lists for the RIL
@@ -212,7 +212,7 @@ for (line in c('A10', 'RIL39', 'RIL110', 'RIL159', 'B100')){
 
 		if (verbose==TRUE){print('Fitting for Whole Stem Attributes (Flowering and Leaf number)')}
 
-		pdf(paste('~/Desktop/2FVT_outputs/2FVT_model_graphs/', line,'_whole_plant_FVTs.pdf',sep=''), height=8, width=6)
+		pdf(paste('~/PATH/TO/FILE/2FVT/2FVT_model_graphs/', line,'_whole_plant_FVTs.pdf',sep=''), height=8, width=6)
 
 		layout(matrix(c(1,2,3), 3, 1, byrow=TRUE))
 
@@ -342,16 +342,16 @@ for (line in c('A10', 'RIL39', 'RIL110', 'RIL159', 'B100')){
 
 		dev.off()
 
-		write.csv(file=paste('~/Desktop/2FVT_outputs/2FVT_parameters/', line,'_whole_plant_FVTs.csv',sep=''), rbind(flw_coefs, lfno_coefs))
-		write.csv(file=paste('~/Desktop/2FVT_outputs/2FVT_fits_w_Wald_CIs/', line, '_flw_fits_w_Wald_CI_weights.csv', sep=''), flw_model_fits, row.names=FALSE)
-		write.csv(file=paste('~/Desktop/2FVT_outputs/2FVT_fits_w_Wald_CIs/', line, '_lfno_fits_w_Wald_CI_weights.csv', sep=''), lfno_model_fits, row.names=FALSE)
+		write.csv(file=paste('~/PATH/TO/FILE/2FVT/2FVT_parameters/', line,'_whole_plant_FVTs.csv',sep=''), rbind(flw_coefs, lfno_coefs))
+		write.csv(file=paste('~/PATH/TO/FILE/2FVT/2FVT_fits_w_Wald_CIs/', line, '_flw_fits_w_Wald_CI_weights.csv', sep=''), flw_model_fits, row.names=FALSE)
+		write.csv(file=paste('~/PATH/TO/FILE/2FVT/2FVT_fits_w_Wald_CIs/', line, '_lfno_fits_w_Wald_CI_weights.csv', sep=''), lfno_model_fits, row.names=FALSE)
 
 
 		#####
 		# Subcomponent Block A: Segmented Culm Height Screening
 		#####
 
-		pdf(paste('~/Desktop/2FVT_outputs/2FVT_model_graphs/seg_culm_hgt_', line,'_2FVT.pdf',sep=''), height=12, width=10)
+		pdf(paste('~/PATH/TO/FILE/2FVT/2FVT_model_graphs/seg_culm_hgt_', line,'_2FVT.pdf',sep=''), height=12, width=10)
 
 		if (verbose==TRUE){print('Initializing block A')}
 
@@ -685,7 +685,7 @@ for (line in c('A10', 'RIL39', 'RIL110', 'RIL159', 'B100')){
 			}
 
 			grand_model_fits<-cbind(x_fit, grand_model_fits)
-			write.csv(file=paste('~/Desktop/2FVT_outputs/2FVT_fits_w_Wald_CIs/', FVT_round, '_', line, '_seg_culm_hgt_fits_w_Wald_CI_weights.csv', sep=''), grand_model_fits, row.names=FALSE)
+			write.csv(file=paste('~/PATH/TO/FILE/2FVT/2FVT_fits_w_Wald_CIs/', FVT_round, '_', line, '_seg_culm_hgt_fits_w_Wald_CI_weights.csv', sep=''), grand_model_fits, row.names=FALSE)
 		}
 
 		dev.off()
@@ -705,8 +705,8 @@ for (line in c('A10', 'RIL39', 'RIL110', 'RIL159', 'B100')){
 
 		Sec.FVT.AICs<-rbind(Sec.FVT.AICs, sigmaAICs)
 
-		write.csv(file=paste('~/Desktop/2FVT_outputs/2FVT_parameters/', line,'_seg_culm_hgt_2FVT_fitted_parameters.csv',sep=''), sghgt_coefs, row.names=FALSE)
-		write.csv(file=paste('~/Desktop/2FVT_outputs/2FVT_model_fits/', line,'_seg_culm_hgt_AICs.csv',sep=''), AIC_vals)
+		write.csv(file=paste('~/PATH/TO/FILE/2FVT/2FVT_parameters/', line,'_seg_culm_hgt_2FVT_fitted_parameters.csv',sep=''), sghgt_coefs, row.names=FALSE)
+		write.csv(file=paste('~/PATH/TO/FILE/2FVT/2FVT_model_fits/', line,'_seg_culm_hgt_AICs.csv',sep=''), AIC_vals)
 
 
 		#####
@@ -714,7 +714,7 @@ for (line in c('A10', 'RIL39', 'RIL110', 'RIL159', 'B100')){
 		#####
 
 
-		pdf(paste('~/Desktop/2FVT_outputs/2FVT_model_graphs/leaf_dist_', line,'_2FVT.pdf',sep=''), height=12, width=10)
+		pdf(paste('~/PATH/TO/FILE/2FVT/2FVT_model_graphs/leaf_dist_', line,'_2FVT.pdf',sep=''), height=12, width=10)
 
 		if (verbose==TRUE){print('Initializing block B')}
 
@@ -1060,7 +1060,7 @@ for (line in c('A10', 'RIL39', 'RIL110', 'RIL159', 'B100')){
 			}
 
 			grand_model_fits<-cbind(x_fit, grand_model_fits)
-			write.csv(file=paste('~/Desktop/2FVT_outputs/2FVT_fits_w_Wald_CIs/', FVT_round, '_', line, '_leaf_dist_fits_w_Wald_CI_weights.csv', sep=''), grand_model_fits, row.names=FALSE)
+			write.csv(file=paste('~/PATH/TO/FILE/2FVT/2FVT_fits_w_Wald_CIs/', FVT_round, '_', line, '_leaf_dist_fits_w_Wald_CI_weights.csv', sep=''), grand_model_fits, row.names=FALSE)
 
 		}
 
@@ -1081,14 +1081,14 @@ for (line in c('A10', 'RIL39', 'RIL110', 'RIL159', 'B100')){
 
 		Sec.FVT.AICs<-rbind(Sec.FVT.AICs, sigmaAICs)
 
-		write.csv(file=paste('~/Desktop/2FVT_outputs/2FVT_parameters/', line,'_leaf_dist_2FVT_fitted_parameters.csv',sep=''), lfdist_coefs, row.names=FALSE)
-		write.csv(file=paste('~/Desktop/2FVT_outputs/2FVT_model_fits/', line,'_leaf_dist_AICs.csv',sep=''), AIC_vals)
+		write.csv(file=paste('~/PATH/TO/FILE/2FVT/2FVT_parameters/', line,'_leaf_dist_2FVT_fitted_parameters.csv',sep=''), lfdist_coefs, row.names=FALSE)
+		write.csv(file=paste('~/PATH/TO/FILE/2FVT/2FVT_model_fits/', line,'_leaf_dist_AICs.csv',sep=''), AIC_vals)
 
 		#####
 		# Subcomponent Block C: Leaf Tip-Ligule Angle Screening
 		#####
 
-		pdf(paste('~/Desktop/2FVT_outputs/2FVT_model_graphs/leaf_angle_', line,'_2FVT.pdf',sep=''), height=12, width=10)
+		pdf(paste('~/PATH/TO/FILE/2FVT/2FVT_model_graphs/leaf_angle_', line,'_2FVT.pdf',sep=''), height=12, width=10)
 
 		if (verbose==TRUE){print('Initializing block C')}
 
@@ -1432,7 +1432,7 @@ for (line in c('A10', 'RIL39', 'RIL110', 'RIL159', 'B100')){
 			}
 
 			grand_model_fits<-cbind(x_fit, grand_model_fits)
-			write.csv(file=paste('~/Desktop/2FVT_outputs/2FVT_fits_w_Wald_CIs/', FVT_round, '_', line, '_leaf_angle_fits_w_Wald_CI_weights.csv', sep=''), grand_model_fits, row.names=FALSE)
+			write.csv(file=paste('~/PATH/TO/FILE/2FVT/2FVT_fits_w_Wald_CIs/', FVT_round, '_', line, '_leaf_angle_fits_w_Wald_CI_weights.csv', sep=''), grand_model_fits, row.names=FALSE)
 
 		}
 
@@ -1453,8 +1453,8 @@ for (line in c('A10', 'RIL39', 'RIL110', 'RIL159', 'B100')){
 
 		Sec.FVT.AICs<-rbind(Sec.FVT.AICs, sigmaAICs)
 
-		write.csv(file=paste('~/Desktop/2FVT_outputs/2FVT_parameters/', line,'_leaf_angles_2FVT_fitted_parameters.csv',sep=''), angle_coefs, row.names=FALSE)
-		write.csv(file=paste('~/Desktop/2FVT_outputs/2FVT_model_fits/', line,'_leaf_angle_model_AICs.csv',sep=''), AIC_vals)
+		write.csv(file=paste('~/PATH/TO/FILE/2FVT/2FVT_parameters/', line,'_leaf_angles_2FVT_fitted_parameters.csv',sep=''), angle_coefs, row.names=FALSE)
+		write.csv(file=paste('~/PATH/TO/FILE/2FVT/2FVT_model_fits/', line,'_leaf_angle_model_AICs.csv',sep=''), AIC_vals)
 
 		Sec.FVT.pars<-rbind(Sec.FVT.pars, c(line, 'seg.hgt', sghgt_coefs[1,5:ncol(sghgt_coefs)]))
 		Sec.FVT.pars<-rbind(Sec.FVT.pars, c(line, 'lf.dist', lfdist_coefs[1,5:ncol(lfdist_coefs)]))
@@ -1464,13 +1464,13 @@ for (line in c('A10', 'RIL39', 'RIL110', 'RIL159', 'B100')){
 
 colnames(Sec.FVT.pars)[1:2]<-c('genotype', 'attribute')
 Sec.FVT.pars<-as.table(Sec.FVT.pars)
-write.csv(file='~/Desktop/2FVT_outputs/2FVT_parameters/All_2FVT_fitted_parameters.csv', Sec.FVT.pars, row.names=FALSE)
+write.csv(file='~/PATH/TO/FILE/2FVT/2FVT_parameters/All_2FVT_fitted_parameters.csv', Sec.FVT.pars, row.names=FALSE)
 
 Sec.FVT.AICs<-as.table(Sec.FVT.AICs)
-write.csv(file='~/Desktop/2FVT_outputs/2FVT_model_fits/All_2FVT_sigmaAICs.csv', Sec.FVT.AICs, row.names=FALSE)
+write.csv(file='~/PATH/TO/FILE/2FVT/2FVT_model_fits/All_2FVT_sigmaAICs.csv', Sec.FVT.AICs, row.names=FALSE)
 
 colnames(Sec.FVT.pred.flw)<-c('Obs_Flw', '70%_pred', '75%_pred', '80%_pred', '85%_pred', '90%_pred', '95%_pred', '100%_pred')
 rownames(Sec.FVT.pred.flw)<-c('A10', 'RIL39', 'RIL110', 'RIL159', 'B100')
-write.csv(file='~/Desktop/2FVT_outputs/2FVT_model_fits/2FVT_predicted_flowering.csv', Sec.FVT.pred.flw, row.names=TRUE)
+write.csv(file='~/PATH/TO/FILE/2FVT/2FVT_model_fits/2FVT_predicted_flowering.csv', Sec.FVT.pred.flw, row.names=TRUE)
 
 
